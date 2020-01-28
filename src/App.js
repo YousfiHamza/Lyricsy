@@ -6,13 +6,15 @@ import Home from "./components/layout/Home";
 import Lyrics from "./components/Tracks/Lyrics";
 import { Provider } from "./context";
 
+import { Consumer } from "./context";
+
 import "./App.css";
 
 function App() {
   return (
     <Provider>
       <Router>
-        <React.Fragment>
+        <div>
           <Navbar />
           <div className="container">
             <Switch>
@@ -20,7 +22,7 @@ function App() {
               <Route exact path="/lyrics/track/:id" component={Lyrics} />
             </Switch>
           </div>
-        </React.Fragment>
+        </div>
       </Router>
     </Provider>
   );

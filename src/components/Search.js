@@ -16,9 +16,13 @@ export default class Search extends Component {
     return (
       <Consumer>
         {value => {
-          const { findSongs } = value;
+          const { findSongs, lightTheme, light, dark } = value;
+          const theme = lightTheme ? light : dark;
           return (
-            <div className="card card-body mb-4 p-4">
+            <div
+              className="card card-body mb-4 p-4"
+              style={{ color: theme.Bcolor, background: theme.background }}
+            >
               <h1 className="display-4 text-center">
                 <i className="fas fa-music" /> Search For A Song
               </h1>
@@ -27,15 +31,22 @@ export default class Search extends Component {
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Song Title / Artist ..."
+                  placeholder="--> Song Title / Artist ..."
                   name="trackTitle"
                   value={this.state.trackTitle}
                   onChange={this.handleChange}
+                  style={{ textAlign: "center" }}
                 />
               </div>
-              <div className="d-flex justify-content-around">
+              <div className="d-flex justify-content-around flex-wrap">
                 <button
-                  className="btn btn-primary btn-lg  mt-3"
+                  style={{
+                    background: theme.Bcolor,
+                    color: theme.Bbackground,
+                    border: "solid",
+                    borderRadius: "5rem"
+                  }}
+                  className="btn  btn-lg  mt-3"
                   name="Artist"
                   onClick={e => findSongs(e.target.name, this.state.trackTitle)}
                 >
@@ -43,7 +54,13 @@ export default class Search extends Component {
                   <i class="fas fa-user-circle mr-1" />
                 </button>
                 <button
-                  className="btn btn-primary btn-lg mt-3"
+                  style={{
+                    background: theme.Bcolor,
+                    color: theme.Bbackground,
+                    border: "solid",
+                    borderRadius: "5rem"
+                  }}
+                  className="btn  btn-lg mt-3"
                   name="Song"
                   onClick={e => findSongs(e.target.name, this.state.trackTitle)}
                 >

@@ -8,10 +8,18 @@ const Navbar = () => {
     <Consumer>
       {value => {
         const { handleTheme, lightTheme, light, dark } = value;
+        const theme = lightTheme ? light : dark;
         return (
-          <nav className="navbar navbar-dark bg-dark mb-5">
-            <span className="navbar-brand mb-0 h1 mx-auto">Lyricsy</span>
-            {/* <Switch
+          <nav
+            className="navbar mb-5"
+            style={{
+              color: theme.Bcolor,
+              background: theme.background,
+              textTransform: "uppercase"
+            }}
+          >
+            <span className="navbar-brand mb-0 h1 mx-auto">-Lyricsy-</span>
+            <Switch
               onChange={() => handleTheme()}
               checked={lightTheme}
               checkedIcon={
@@ -25,7 +33,7 @@ const Navbar = () => {
                 </div>
               }
               onColor="#09f"
-            />*/}
+            />
           </nav>
         );
       }}

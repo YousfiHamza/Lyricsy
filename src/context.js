@@ -7,8 +7,20 @@ export class Provider extends Component {
     track_list: [],
     heading: "Top 10 Tracks",
     lightTheme: true,
-    light: {},
-    dark: {}
+    light: {
+      color: "#555",
+      bTitle: "#ddd",
+      background: "#ddd",
+      Bcolor: "#15f",
+      Bbackground: "#fff"
+    },
+    dark: {
+      color: "#ddd",
+      ui: "#333",
+      background: "#555",
+      Bcolor: "#f23",
+      Bbackground: "#222"
+    }
   };
 
   handleTheme = () => {
@@ -51,7 +63,7 @@ export class Provider extends Component {
           console.log(result);
           this.setState({
             track_list: result.message.body.track_list,
-            heading: "Search Result"
+            heading: "Search Results"
           });
         },
         error => {
