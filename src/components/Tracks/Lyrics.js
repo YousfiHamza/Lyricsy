@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
 import { Consumer } from "../../context";
+import Spinner from "../layout/Spinner";
 
 export default class Lyrics extends Component {
   state = {

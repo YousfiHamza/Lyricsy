@@ -37,13 +37,13 @@ export class Provider extends Component {
 
   fetchBySong = song => {
     return fetch(
-      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${song}&page=1&page_size=10&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
+      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${song}&page=1&page_size=20&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     );
   };
 
   fetchByArtist = artist => {
     return fetch(
-      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artist}&page=1&page_size=10&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
+      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artist}&page=1&page_size=20&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     );
   };
 
@@ -60,7 +60,6 @@ export class Provider extends Component {
       .then(res => res.json())
       .then(
         result => {
-          console.log(result);
           this.setState({
             track_list: result.message.body.track_list,
             heading: "Search Results"
@@ -74,12 +73,11 @@ export class Provider extends Component {
 
   componentDidMount() {
     fetch(
-      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=fr&f_has_lyrics=1&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
+      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=20&country=fr&f_has_lyrics=1&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     )
       .then(res => res.json())
       .then(
         result => {
-          console.log(result);
           this.setState({
             track_list: result.message.body.track_list
           });

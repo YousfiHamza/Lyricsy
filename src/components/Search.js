@@ -46,12 +46,11 @@ export default class Search extends Component {
                     border: "solid",
                     borderRadius: "5rem"
                   }}
-                  className="btn  btn-lg  mt-3"
+                  className="btn btn-lg mt-3 display-flex justify-content-around "
                   name="Artist"
                   onClick={e => findSongs(e.target.name, this.state.trackTitle)}
                 >
                   <i class="fas fa-user-circle mr-1" /> Search By Artist{" "}
-                  <i class="fas fa-user-circle mr-1" />
                 </button>
                 <button
                   style={{
@@ -65,7 +64,6 @@ export default class Search extends Component {
                   onClick={e => findSongs(e.target.name, this.state.trackTitle)}
                 >
                   <i className="fas fa-music" /> Search By Song{" "}
-                  <i className="fas fa-music" />
                 </button>
               </div>
             </div>

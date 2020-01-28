@@ -6,8 +6,6 @@ import Home from "./components/layout/Home";
 import Lyrics from "./components/Tracks/Lyrics";
 import { Provider } from "./context";
 
-import { Consumer } from "./context";
-
 import "./App.css";
 
 function App() {
