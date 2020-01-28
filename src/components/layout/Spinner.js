@@ -1,7 +1,9 @@
 import React from "react";
-import spinner from "./spinner.gif";
+import spinner1 from "./spinner1.gif";
+import spinner2 from "./spinner2.gif";
 
-export default () => {
+const Spinner = props => {
+  const spinner = props.num === 1 ? spinner2 : spinner1;
   return (
     <div>
       <img
@@ -12,3 +14,5 @@ export default () => {
     </div>
   );
 };
+
+export default Spinner;

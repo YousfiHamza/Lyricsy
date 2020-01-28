@@ -7,15 +7,18 @@ const Track = props => {
     <div className="col-md-6">
       <div className="card mb-4 shadow-md">
         <div className="card-body">
-          <h5>{track.artist_name}</h5>
+          <h5 className="text-center">
+            <i class="far fa-play-circle mr-1"></i>
+            {track.track_name}
+          </h5>
           <p className="card-text">
             <strong>
-              <i className="fas fa-play"></i> Track :
+              <i className="fas fa-user-circle mr-1"></i> Artist :
             </strong>
-            {track.track_name}
+            {track.artist_name}
             <br />
             <strong>
-              <i className="fas fa-compact-disc"></i> Album :
+              <i className="fas fa-compact-disc mr-1"></i> Album :
             </strong>
             {track.album_name}
           </p>
@@ -23,7 +26,9 @@ const Track = props => {
             to={`lyrics/track/${track.track_id}`}
             className="btn btn-dark btn-block"
           >
-            <i className="fas fa-chevron-right" /> View Lyrics{" "}
+            <strong>
+              <i class="far fa-hand-point-right mr-2"></i> View Lyrics{" "}
+            </strong>
           </Link>
         </div>
       </div>

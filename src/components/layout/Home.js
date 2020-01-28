@@ -1,10 +1,11 @@
 import React from "react";
 import TrackList from "../Tracks/TrackList";
+import Search from "../Search";
 
 const Home = () => {
   return (
     <React.Fragment>
-      <h1>Hello from Home</h1>
+      <Search />
       <TrackList />
     </React.Fragment>
   );
