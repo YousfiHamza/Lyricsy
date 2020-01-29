@@ -71,7 +71,7 @@ export class Provider extends Component {
       );
   };
 
-  componentDidMount() {
+  fetchTopSongs() {
     fetch(
       `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=20&country=fr&f_has_lyrics=1&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     )
@@ -86,6 +86,34 @@ export class Provider extends Component {
           console.log(error);
         }
       );
+  }
+
+  componentDidMount() {
+    if (!localStorage.getItem("Track List")) {
+      this.fetchTopSongs();
+    } else {
+      console.log("using data from local storage");
+    }
+  }
+
+  componentWillMount() {
+    if (
+      localStorage.getItem("Track List") &&
+      localStorage.getItem("Heading") &&
+      localStorage.getItem("isLightTheme")
+    ) {
+      this.setState({
+        track_list: JSON.parse(localStorage.getItem("Track List")),
+        heading: JSON.parse(localStorage.getItem("Heading")),
+        lightTheme: JSON.parse(localStorage.getItem("isLightTheme"))
+      });
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem("Track List", JSON.stringify(nextState.track_list));
+    localStorage.setItem("Heading", JSON.stringify(nextState.heading));
+    localStorage.setItem("isLightTheme", nextState.lightTheme);
   }
 
   render() {
