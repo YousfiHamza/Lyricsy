@@ -82,27 +82,29 @@ export default class Lyrics extends Component {
                   }}
                 >
                   <div classname="card-header">
-                    <span
-                      style={{
-                        textTransform: "uppercase",
-                        textDecoration: "underline",
-                        color: theme.Bcolor,
-                        margin: "3rem 3rem"
-                      }}
-                    >
-                      {track.track_name}
-                    </span>{" "}
+                    <strong>
+                      <span
+                        style={{
+                          textTransform: "uppercase",
+                          color: theme.Bcolor,
+                          margin: "3rem 3rem"
+                        }}
+                      >
+                        {track.track_name}
+                      </span>
+                    </strong>{" "}
                     BY :{" "}
-                    <span
-                      style={{
-                        textTransform: "uppercase",
-                        textDecoration: "underline",
-                        color: theme.Bcolor,
-                        padding: "3rem 3rem"
-                      }}
-                    >
-                      {track.artist_name}
-                    </span>
+                    <strong>
+                      <span
+                        style={{
+                          textTransform: "uppercase",
+                          color: theme.Bcolor,
+                          padding: "3rem 3rem"
+                        }}
+                      >
+                        {track.artist_name}
+                      </span>
+                    </strong>
                   </div>
                   <div className="card-body">
                     <p className="card-text">{lyrics.lyrics_body}</p>
