@@ -1,4 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Welcome To YH Restaurant :
+
+This is a Lyrics Finder App created mainly with React.JS (context API) / Bootstrap, that you can check now on [YH-Lyrics.app](https://yh-lyrics.netlify.app/) <=
+
+## Overview :
+
+![](public/lightt.png)
+![](public/dark.png)
+
+## Features :
+
+These are some of the features :
+
+* You can make your search by ARTIST or by SONG .
+
+* You can switch from The DARK THEME to the LIGHT THEME.
+
+* After The API call, your Search is Stored in the Session Storage ( no loss if the page reload )
+
+* You can choose your song from the 20 results if you want to read its Lyrics.
+
+* Individual Lyrics Page.
+
 
 ## Available Scripts
 
