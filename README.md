@@ -1,4 +1,4 @@
-## Welcome To YH Restaurant :
+## Welcome To YH Lyrics :
 
 This is a Lyrics Finder App created mainly with React.JS (context API) / Bootstrap, that you can check now on [YH-Lyrics.app](https://yh-lyrics.netlify.app/) <=
 
