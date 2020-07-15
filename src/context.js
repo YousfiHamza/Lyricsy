@@ -9,39 +9,39 @@ export class Provider extends Component {
     lightTheme: true,
     light: {
       color: "#555",
-      bTitle: "#ddd",
+      bTitle: "#cdc",
       background: "#ddd",
-      Bcolor: "#15f",
-      Bbackground: "#fff"
+      Bcolor: "#27f",
+      Bbackground: "#fff",
     },
     dark: {
       color: "#ddd",
       ui: "#333",
       background: "#555",
-      Bcolor: "#f23",
-      Bbackground: "#222"
-    }
+      Bcolor: "#f31",
+      Bbackground: "#222",
+    },
   };
 
   handleTheme = () => {
     this.setState({
-      lightTheme: !this.state.lightTheme
+      lightTheme: !this.state.lightTheme,
     });
   };
 
-  setTrackList = list => {
+  setTrackList = (list) => {
     this.setState({
-      track_list: list
+      track_list: list,
     });
   };
 
-  fetchBySong = song => {
+  fetchBySong = (song) => {
     return fetch(
       `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${song}&page=1&page_size=20&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     );
   };
 
-  fetchByArtist = artist => {
+  fetchByArtist = (artist) => {
     return fetch(
       `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artist}&page=1&page_size=20&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     );
@@ -57,15 +57,15 @@ export class Provider extends Component {
       this.fetch = this.fetchByArtist(input);
     }
     this.fetch
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
             track_list: result.message.body.track_list,
-            heading: "Search Results"
+            heading: "Search Results",
           });
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
@@ -75,45 +75,45 @@ export class Provider extends Component {
     fetch(
       `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=20&country=fr&f_has_lyrics=1&apikey=${process.env.REACT_APP_LYRICSY_MUSIXMATCH_API_KEY}`
     )
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
-            track_list: result.message.body.track_list
+            track_list: result.message.body.track_list,
           });
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
   }
 
   componentDidMount() {
-    if (!localStorage.getItem("Track List")) {
+    if (!sessionStorage.getItem("Track List")) {
       this.fetchTopSongs();
     } else {
-      console.log("using data from local storage");
+      console.log("using data from Session storage");
     }
   }
 
   componentWillMount() {
     if (
-      localStorage.getItem("Track List") &&
-      localStorage.getItem("Heading") &&
-      localStorage.getItem("isLightTheme")
+      sessionStorage.getItem("Track List") &&
+      sessionStorage.getItem("Heading") &&
+      sessionStorage.getItem("isLightTheme")
     ) {
       this.setState({
-        track_list: JSON.parse(localStorage.getItem("Track List")),
-        heading: JSON.parse(localStorage.getItem("Heading")),
-        lightTheme: JSON.parse(localStorage.getItem("isLightTheme"))
+        track_list: JSON.parse(sessionStorage.getItem("Track List")),
+        heading: JSON.parse(sessionStorage.getItem("Heading")),
+        lightTheme: JSON.parse(sessionStorage.getItem("isLightTheme")),
       });
     }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem("Track List", JSON.stringify(nextState.track_list));
-    localStorage.setItem("Heading", JSON.stringify(nextState.heading));
-    localStorage.setItem("isLightTheme", nextState.lightTheme);
+    sessionStorage.setItem("Track List", JSON.stringify(nextState.track_list));
+    sessionStorage.setItem("Heading", JSON.stringify(nextState.heading));
+    sessionStorage.setItem("isLightTheme", nextState.lightTheme);
   }
 
   render() {
@@ -122,7 +122,7 @@ export class Provider extends Component {
         value={{
           ...this.state,
           findSongs: this.findSongs,
-          handleTheme: this.handleTheme
+          handleTheme: this.handleTheme,
         }}
       >
         {this.props.children}
